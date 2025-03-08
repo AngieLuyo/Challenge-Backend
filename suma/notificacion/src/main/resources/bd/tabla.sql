@@ -1,0 +1,1 @@
+create table if not exists historial (id SERIAL PRIMARY KEY, fecha TIMESTAMP DEFAULT NOW(), endpoint TEXT NOT NULL, parametros JSONB, respuesta JSONB, error TEXT);

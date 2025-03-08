@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "e7578623-2888-4b6c-bec9-8b5adaa4a089",
+		"name": "challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11776215"
+	},
+	"item": [
+		{
+			"name": "mockservice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/api/v1/mock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"api",
+						"v1",
+						"mock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calcular",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num1\": 10,\r\n    \"num2\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/api/v1/calculo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"calculo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

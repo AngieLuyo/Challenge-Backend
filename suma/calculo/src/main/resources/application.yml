@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: calculo
+  rabbitmq:
+    addresses: localhost:5672
+server:
+  port: 8085
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true

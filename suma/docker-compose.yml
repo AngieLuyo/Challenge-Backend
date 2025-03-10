@@ -36,6 +36,57 @@ services:
     networks:
       - spring
 
+  eureka-server:
+    image: angieluyo/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+
+  servicio-externo:
+    image: angieluyo/servicio-externo:latest
+    container_name: servicio-externo
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      - eureka-server
+
+  notificacion:
+    image: angieluyo/notificacion:latest
+    container_name: notificacion
+    ports:
+      - "8083:8083"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - postgres
+      - rabbitmq
+      - eureka-server
+
+  calculo:
+    image: angieluyo/calculo:latest
+    container_name: calculo
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    depends_on:
+      - rabbitmq
+      - eureka-server
+
+
 networks:
   postgres:
     driver: bridge

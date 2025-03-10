@@ -1,0 +1,39 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: notificacion
+  datasource:
+    password: 1234
+    url: jdbc:postgresql://localhost:5431/suma
+    username: suma
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  rabbitmq:
+    addresses: localhost:5672
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:bd/tabla.sql
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queues:
+    notification: notification.queue
+  routing-keys:
+    internal-notification: internal.notification.routing-key
